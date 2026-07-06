@@ -1,0 +1,168 @@
+{
+  "meta": {
+    "purpose": "Personal brand website for Kim Kroll (קים קרול) - the PERSON, not a single service. This is an experimental, high-impact site to establish Kim as a memorable personal brand with many facets: builder, creator, mentor, digital nomad. Also serves as Kim's playground to push visual/technical limits (Three.js, 3D, rich UI).",
+    "language": "Hebrew (he-IL), RTL",
+    "tone": "Bold, confident, alive. Not corporate, not minimal-safe. This is a personality-forward site - it should feel like Kim: curious, warm, in motion, unafraid. Editorial typography but with daring, immersive motion.",
+    "connecting_thread_he": "בונה דברים, מלווה אנשים, חי בתנועה - קים לא נכנס לקופסה אחת. החוט הוא לא המקצוע אלא הגישה: לקחת מה שיש בראש ולהוציא אותו החוצה, בכל זירה.",
+    "visual_direction": {
+      "ambition": "FULL WOW. This site should feel like an Awwwards / 21st.dev showcase - immersive, three-dimensional, alive. Heavy, intentional motion is the GOAL here, not something to restrain.",
+      "style": "Bold editorial typography meets immersive 3D. Large confident Hebrew headlines, dramatic scroll-driven scenes, depth and parallax.",
+      "colors": {
+        "primary": "#6B3FA0 (purple)",
+        "base_light": "#FAF8F5",
+        "base_dark": "#0A0A0A",
+        "accent_usage": "Purple is the signature thread. Can be used boldly here - glows, gradients, 3D-lit surfaces - not just as a restrained accent."
+      },
+      "motion_stack": "GSAP + ScrollTrigger for scroll choreography; Three.js / react-three-fiber for 3D scenes and WebGL. GSAP is a hard requirement over Framer Motion (Framer caused flickering on 120Hz iPhones).",
+      "performance_note": "Wow is the goal, but it must run smoothly on GPU and stay stable on 120Hz screens. Always provide graceful fallbacks for mobile / weak devices / prefers-reduced-motion - a static or lightweight version of each heavy scene."
+    },
+    "build_tools_note": "Feeds into Claude Code, Three.js, 21st.dev components, etc. Hebrew copy is final and ready to paste. Structural/design directives in English for tool compatibility. NOTE: this is an experimental playground - the brand identity will sharpen THROUGH building, so sections are designed to be flexible and swappable."
+  },
+  "brand_identity": {
+    "name_he": "קים קרול",
+    "name_en": "Kim Kroll",
+    "tagline_he": "בונה דברים. מלווה אנשים. חי בתנועה.",
+    "positioning_he": "אדם שלא נכנס לקופסה אחת - בונה, יוצר, מלווה, ונע בעולם.",
+    "core_dna_he": "תמיד הייתי אדם של אנשים, וגם אדם שמוכרח ליצור. הזירות התחלפו - מסעדנות, מד\"א, טכנולוגיה, נדודים - אבל החוט נשאר: לקחת מה שיש בראש, ולהוציא אותו החוצה. בכל זירה, עם כל מי שמולי.",
+    "hats_he": [
+      "בונה - טכנולוגיה, אתרים, מוצרים דיגיטליים",
+      "יוצר - תוכן, רעיונות, סיפורים",
+      "מלווה - אדם של אנשים, עוזר להוציא רעיונות לאור",
+      "נווד - חי ועובד מכל מקום בעולם"
+    ],
+    "current_status_he": "נווד דיגיטלי. שנתיים בתאילנד, היום באנגליה."
+  },
+  "sections": {
+    "hero": {
+      "directive": "FULL-IMPACT immersive hero. This is the 'wow' moment - go big. Three.js / WebGL scene behind/around Kim's portrait. The portrait should feel integrated INTO the 3D environment, not pasted on top (feather/cutout so no hard frame edges). Large bold Hebrew headline. The scene reacts subtly to scroll and mouse.",
+      "headline_he": "אני לא נכנס לקופסה אחת.",
+      "subheadline_he": "קים קרול - בונה, יוצר, ומלווה. לוקח את מה שיש לך בראש, ומוציא אותו אל העולם.",
+      "cta_primary_he": "בוא נכיר",
+      "cta_secondary_he": "מה אני עושה",
+      "visual_notes_he": "הדיוקן (גלימה סגולה) מוטמע בתוך סצנה תלת-ממדית. הרקע חי, נושם, מגיב לתנועה. גדול, נועז, בלתי-נשכח."
+    },
+    "hats": {
+      "directive": "Four full-screen 'worlds', one per hat, only one visible at a time. Scroll choreography is the surprise: hero->hat1 is ALWAYS a downward scroll; after that the transition direction alternates per hat (down, right, down...). The page deliberately does not behave like a normal scroll page. Within each transition, layers move at their own pace (bg slow, text fast, shapes from the sides) for depth. ONE shared atmosphere whose hue/fog/gradient changes per world (weblove principle: same setup, different hue = different world) - NOT four full 3D scenes. Only the visible world is rendered; flat fallback for mobile / weak devices / prefers-reduced-motion. GSAP + ScrollTrigger, not Framer Motion.",
+      "title_he": "כמה כובעים, אדם אחד",
+      "hats": [
+        {
+          "number": "01",
+          "name_he": "בונה",
+          "tagline_he": "הרעיון שבראש שלך - יוצא לאוויר.",
+          "body_he": "יש לך רעיון שלא מפסיק לרוץ לך בראש, אבל נשאר שם. אני בונה אותו איתך, צעד-צעד, עד שהוא חי באמת.",
+          "media": { "type": "project", "src": "[project mockup placeholder]" },
+          "world": { "accent": "#4E2C77", "mood": "structured, grid, deep purple" }
+        },
+        {
+          "number": "02",
+          "name_he": "יוצר",
+          "tagline_he": "שזה יראה וירגיש כמו שדמיינת.",
+          "body_he": "מפחד שזה ייצא חובבני? אני דואג שכל פרט, כל תנועה וכל תחושה יהיו מדויקים - שהדבר שלך יופיע ברמה שמגיעה לו.",
+          "media": { "type": "video", "src": "[video placeholder]" },
+          "world": { "accent": "#9A6FD0", "mood": "fluid, organic, light" }
+        },
+        {
+          "number": "03",
+          "name_he": "מלווה",
+          "tagline_he": "אני לא בונה לך אתר. אני מלווה אותך.",
+          "body_he": "מבין מי עומד מולי, ועוזר לך להוציא את מה שיש לך בראש אל העולם.",
+          "media": { "type": "image", "src": "[image placeholder]" },
+          "world": { "accent": "#C8794E", "mood": "warm, soft, human" }
+        },
+        {
+          "number": "04",
+          "name_he": "נווד",
+          "tagline_he": "לא משנה איפה אתה. אני איתך.",
+          "body_he": "מכל מקום בעולם, זמין וגמיש - בלי גבולות של מיקום או שעה. העבודה נעה סביב החיים שלך, לא הפוך.",
+          "media": { "type": "image", "src": "[image placeholder]" },
+          "world": { "accent": "#2E2A40", "mood": "spacious, open, dark" }
+        }
+      ]
+    },
+    "story": {
+      "directive": "The journey. Scroll-driven storytelling - this ties to the 'evolving environment' idea: the 3D scene/mood shifts as the user scrolls through Kim's path. Reveal-on-scroll per beat. This is the emotional core that makes a personal brand stick.",
+      "title_he": "המסע",
+      "body_he": [
+        "רוב החיים שלי לא הייתי בעולם הזה. מסעדנות, עבודה בשטח במד\"א, אנשים בכל מיני מצבים.",
+        "לפני שלוש שנים קיבלתי מחשב יד שנייה, והתחלתי ללמוד לבד. חודשיים, אחר כך שנתיים פול-סטאק, ושנה בסטארטאפ בניו יורק.",
+        "מאז אני נווד. שנתיים בתאילנד, היום באנגליה - תמיד בתנועה, תמיד יוצר.",
+        "מה שלא השתנה: אני לוקח את מה שיש בראש, ומוציא אותו החוצה. וזה מה שאני עושה גם בשבילך."
+      ]
+    },
+    "work": {
+      "directive": "Proof / showcase. Projects and creations shown in immersive 3D-framed mockups or an interactive gallery. Leave placeholders - Kim will fill real work. Can include both tech builds AND content/creative pieces (reflecting the multi-hat identity).",
+      "title_he": "מה יצא לי מהראש",
+      "subtitle_he": "דברים שבניתי, יצרתי, וליוויתי",
+      "project_template": {
+        "name_he": "[שם]",
+        "type_he": "[בנייה / תוכן / ליווי]",
+        "one_liner_he": "[משפט אחד - מה זה ולמה זה מעניין]",
+        "image": "[mockup / visual]"
+      },
+      "note_he": "מלא 3-5 פריטים אמיתיים מכל הכובעים. אם אין - בנה דמו."
+    },
+    "connect": {
+      "directive": "Strong closing. Bold, immersive, purple. The 3D environment reaches its peak/resolution here. One clear invitation to connect - open-ended (not just 'hire me for a website', since this is a broad personal brand).",
+      "headline_he": "יש לך רעיון, פרויקט, או סתם רוצה לדבר?",
+      "subtext_he": "אני כאן בשביל בדיוק זה. בוא נוציא אותו לאוויר.",
+      "cta_he": "דבר איתי",
+      "secondary_he": "או עקוב אחרי המסע"
+    },
+    "footer": {
+      "name_he": "קים קרול",
+      "tagline_he": "בונה · יוצר · מלווה · נווד - מכל מקום בעולם",
+      "links_he": [
+        "אינסטגרם",
+        "אימייל",
+        "עבודות"
+      ]
+    }
+  },
+  "inspiration_principles": {
+    "directive": "Reference techniques distilled from sites Kim studied. Apply in Kim's visual language (purple/white/black, bold editorial). Unlike the earlier restrained brief, here the ambition is HIGH - immersive and three-dimensional. The goal is wow.",
+    "signature_techniques": [
+      {
+        "name": "Immersive 3D / WebGL environment",
+        "source": "21st.dev, weblove (TikTok)",
+        "what": "A real Three.js/WebGL scene as the living backdrop - depth, lighting, particles, scenes that swap or evolve on scroll.",
+        "kim_version": "Purple-lit 3D environment that Kim's portrait lives inside. Evolves section by section as a visual through-line for 'the journey'. Bold but coherent - one strong world, not ten gimmicks."
+      },
+      {
+        "name": "Scroll-driven scene evolution",
+        "source": "weblove",
+        "what": "Same 3D scene shifts mood/environment as the user scrolls (color grading, fog, camera).",
+        "kim_version": "The environment deepens toward purple as you scroll to the final CTA. Ties to Kim's story arc - movement and transformation."
+      },
+      {
+        "name": "Logo-to-background reveal + floating depth layers",
+        "source": "tomerart.co.il",
+        "what": "Opening animation where the logo becomes the environment; geometric layers float with z-index interplay for depth.",
+        "kim_version": "Can open with a KK monogram that dissolves into the 3D scene. Floating geometric elements add depth around the portrait."
+      },
+      {
+        "name": "Horizontal scroll signature line",
+        "source": "tomerart.co.il",
+        "what": "A statement line moves horizontally on scroll.",
+        "kim_version": "Use once for the signature line - e.g. 'בונה דברים, מלווה אנשים, חי בתנועה'. A bold moment, not a recurring gimmick."
+      }
+    ],
+    "balance_note": "Wow is the goal, but coherence still matters. One strong immersive world beats a pile of unrelated effects. Kim's portrait and message stay legible - the 3D serves the story, it doesn't bury it. (This is about coherence, NOT about minimalism - go bold.)"
+  },
+  "copy_voice_rules": {
+    "address": "Speak to the visitor warmly and directly ('אתה', 'שלך').",
+    "avoid": [
+      "Corporate jargon",
+      "Buzzwords",
+      "Narrowing Kim to a single profession",
+      "Cold/distant tone"
+    ],
+    "embrace": [
+      "Bold confidence",
+      "Human warmth",
+      "Short punchy sentences",
+      "The multi-hat identity",
+      "Movement and creation as themes"
+    ],
+    "signature_theme_he": "לוקח את מה שיש בראש - ומוציא אותו החוצה."
+  }
+}
