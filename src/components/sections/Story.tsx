@@ -9,7 +9,7 @@ import { STORY_TITLE, STORY_BEATS } from "@/lib/story";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 // Presentational kickers per beat (the copy itself lives in the brand JSON).
-const KICKERS = ["מאיפה התחלתי", "הקפיצה", "בתנועה", "מה שלא השתנה"];
+const KICKERS = ["מאיפה התחלתי", "הקפיצה", "בתנועה", "החוט"];
 
 /**
  * "המסע" — the journey. A calm, editorial vertical timeline (a deliberate rest
