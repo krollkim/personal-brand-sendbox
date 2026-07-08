@@ -4,26 +4,15 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import World, { type Tone, type WorldLayout } from "@/components/hats/World";
-import type { AtmosphereVariant } from "@/components/hats/Atmosphere";
-import { HATS } from "@/lib/hats";
+import World from "@/components/hats/World";
+import { resolveHats } from "@/lib/content";
+import { useLang } from "@/lib/i18n";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-// Per-world look: deep base tone + atmosphere treatment + text tone.
-const WORLDS: {
-  base: string;
-  variant: AtmosphereVariant;
-  tone: Tone;
-  layout: WorldLayout;
-}[] = [
-  { base: "#FFFFFF", variant: "clean", tone: "light", layout: "split" }, // 01 בונה
-  { base: "#FFFFFF", variant: "flow", tone: "light", layout: "showcase" }, // 02 יוצר
-  { base: "#FFFFFF", variant: "soft", tone: "light", layout: "journey" }, // 03 מלווה
-  { base: "#FFFFFF", variant: "soft", tone: "light", layout: "map" }, // 04 נווד
-];
-
 export default function Hats() {
+  const { lang, dir } = useLang();
+  const hats = resolveHats(lang);
   const root = useRef<HTMLElement>(null);
   const viewport = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLDivElement>(null);
@@ -78,7 +67,7 @@ export default function Hats() {
         scrollTrigger: {
           trigger: viewport.current,
           start: "top top",
-          end: "+=850%",
+          end: "+=640%",
           pin: true,
           scrub: 0.5,
           anticipatePin: 1,
@@ -204,25 +193,17 @@ export default function Hats() {
   if (flat) {
     return (
       <section id="hats" ref={root} className="relative bg-white">
-        {HATS.slice(0, 4).map((hat, i) => (
-          <World
-            key={hat.number}
-            hat={hat}
-            base={WORLDS[i].base}
-            variant={WORLDS[i].variant}
-            tone={WORLDS[i].tone}
-            layout={WORLDS[i].layout}
-            animate={false}
-          />
+        {hats.slice(0, 4).map((hat) => (
+          <World key={hat.number} hat={hat} animate={false} />
         ))}
       </section>
     );
   }
 
   // ---- Full choreography ----
-  // dir="ltr" on the horizontal track so the overflow anchor and translateX are
-  // predictable (in RTL the track would otherwise start showing the RIGHT panel).
-  // Each World is re-wrapped dir="rtl" so the Hebrew layout stays correct.
+  // dir="ltr" on the horizontal track so the overflow anchor and translateX stay
+  // predictable regardless of language; each World is re-wrapped in the page dir
+  // so its text lays out correctly (he=rtl / en=ltr).
   return (
     <section id="hats" ref={root} className="relative bg-white">
       <div
@@ -231,69 +212,31 @@ export default function Hats() {
         className="relative h-[100svh] w-full overflow-hidden"
         style={{ perspective: "1200px" }}
       >
-        <div
-          ref={track}
-          className="relative z-10 h-full"
-          style={{ width: "200vw" }}
-        >
+        <div ref={track} className="relative z-10 h-full" style={{ width: "200vw" }}>
           <div ref={panel1} className="absolute left-0 top-0 h-full w-screen">
-            <div dir="rtl" className="h-full w-full">
-              <World
-                hat={HATS[0]}
-                base={WORLDS[0].base}
-                variant={WORLDS[0].variant}
-                tone={WORLDS[0].tone}
-                layout={WORLDS[0].layout}
-              />
+            <div dir={dir} className="h-full w-full">
+              <World hat={hats[0]} />
             </div>
           </div>
-          <div
-            ref={panel2}
-            className="absolute top-0 h-full w-screen"
-            style={{ left: "-100vw" }}
-          >
-            <div dir="rtl" className="h-full w-full">
-              <World
-                hat={HATS[1]}
-                base={WORLDS[1].base}
-                variant={WORLDS[1].variant}
-                tone={WORLDS[1].tone}
-                layout={WORLDS[1].layout}
-              />
+          <div ref={panel2} className="absolute top-0 h-full w-screen" style={{ left: "-100vw" }}>
+            <div dir={dir} className="h-full w-full">
+              <World hat={hats[1]} />
             </div>
           </div>
         </div>
 
         {/* hat4 — sits STATIC behind hat3 (earlier in DOM so hat3 paints over it);
             revealed when hat3 lifts away in the drop */}
-        <div
-          ref={panel4}
-          className="pointer-events-none absolute inset-0 z-0"
-        >
-          <div dir="rtl" className="h-full w-full">
-            <World
-              hat={HATS[3]}
-              base={WORLDS[3].base}
-              variant={WORLDS[3].variant}
-              tone={WORLDS[3].tone}
-              layout={WORLDS[3].layout}
-            />
+        <div ref={panel4} className="pointer-events-none absolute inset-0 z-0">
+          <div dir={dir} className="h-full w-full">
+            <World hat={hats[3]} />
           </div>
         </div>
 
         {/* hat3 — comes forward from depth (zoom), then lifts UP to reveal hat4 */}
-        <div
-          ref={panel3}
-          className="pointer-events-none absolute inset-0 z-0"
-        >
-          <div dir="rtl" className="h-full w-full">
-            <World
-              hat={HATS[2]}
-              base={WORLDS[2].base}
-              variant={WORLDS[2].variant}
-              tone={WORLDS[2].tone}
-              layout={WORLDS[2].layout}
-            />
+        <div ref={panel3} className="pointer-events-none absolute inset-0 z-0">
+          <div dir={dir} className="h-full w-full">
+            <World hat={hats[2]} />
           </div>
         </div>
       </div>

@@ -29,6 +29,7 @@ const config: Config = {
           DEFAULT: "#E11D8B",
           soft: "#F25CB0",
           tint: "#FCE7F3",
+          ink: "#CE1780", // darker fuchsia for small text (WCAG AA ≥4.5 on white)
         },
       },
       backgroundImage: {

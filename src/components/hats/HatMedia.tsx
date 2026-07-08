@@ -1,6 +1,7 @@
 "use client";
 
 import type { HatMediaType } from "@/lib/hats";
+import { useLang } from "@/lib/i18n";
 
 /**
  * Renders a hat's media block by type. These are framed placeholders — Kim
@@ -16,8 +17,8 @@ export default function HatMedia({
   accent: string;
   tone?: "dark" | "light";
 }) {
-  const label =
-    type === "project" ? "פרויקט" : type === "video" ? "וידאו" : "תמונה";
+  const { t } = useLang();
+  const label = t.media[type];
   const dark = tone === "dark";
 
   return (

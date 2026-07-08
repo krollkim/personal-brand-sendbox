@@ -68,6 +68,7 @@ export default function HeroOrb() {
     let H = 0;
 
     const resize = () => {
+      if (!ctx) return;
       const rect = wrap.getBoundingClientRect();
       W = rect.width;
       H = rect.height;
@@ -93,7 +94,7 @@ export default function HeroOrb() {
     };
 
     function draw() {
-      if (!W || !H) return;
+      if (!ctx || !W || !H) return;
       const cx = W / 2;
       const cy = H / 2;
       const R = Math.min(W, H) * 0.42;
