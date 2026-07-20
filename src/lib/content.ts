@@ -147,7 +147,7 @@ const en: Content = {
     title: "The journey",
     kickers: ["Where I started", "The leap", "In motion", "The thread"],
     beats: [
-      "For most of my life I wasn't in this world. Restaurants, field work as a paramedic, people in every kind of situation.",
+      "For most of my life I wasn't in this world. Restaurants, field work as a medic, people in every kind of situation.",
       "Three years ago I got a second-hand laptop and started teaching myself. Two months, then two years of full-stack, and a year at a startup in New York.",
       "Since then I've been a nomad. Two years in Thailand, today in England - always in motion, always creating.",
       "What never changed: I take what's in the head, and bring it out. And that's exactly what I do for you.",
